@@ -1,0 +1,553 @@
+@import "tailwindcss";
+
+/* MASTER RESET & LAYOUT */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0B1120;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* Allow scrolling */
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+}
+
+/* SCROLL SNAP CONTAINER OVERRIDES */
+.slide-container {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0B1120;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Allow internal scrolling on mobile */
+}
+
+@media (min-width: 1024px) {
+  .slide-container {
+    height: 100vh !important;
+    overflow-y: hidden;
+    /* Lock height on desktop */
+  }
+}
+
+/* Responsive Text Adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  .text-6xl {
+    font-size: 2.5rem !important;
+  }
+
+  .text-7xl {
+    font-size: 3rem !important;
+  }
+
+  .px-12 {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .py-8 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
+
+.responsive-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* GLOBAL PREMIUM AESTHETICS (Ensure consistency if missing in chunks) */
+.glass-card,
+.glass-panel,
+.action-card {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* HIDE SCROLLBAR BUT ALLOW SCROLLING */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* PRINT STYLES FOR PDF MASTERING */
+@media print {
+  body {
+    background-color: #0B1120 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  .slide-container {
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    scroll-snap-align: none !important;
+    position: relative !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .bg-grid {
+    background-color: #0B1120 !important;
+    background-image: none !important;
+    /* Hide grid on print for cleaner PDF */
+  }
+
+  /* Ensure all charts and icons show up */
+  canvas,
+  i,
+  .fas,
+  .far {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Hide any floating UI if they exist */
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Slide 1 Specific CSS */
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.bg-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Slide 2 Specific CSS */
+.glass-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  backdrop-filter: none;
+}
+
+/* Slide 3 Specific CSS */
+.glass-panel {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  backdrop-filter: none;
+}
+
+/* Slide 4 Specific CSS */
+.profile-card {
+  background: rgba(15, 23, 42, 0.8);
+  border-left: 4px solid;
+  transition: transform 0.2s;
+}
+
+.profile-card:hover {
+  transform: translateX(4px);
+  background: rgba(30, 41, 59, 0.9);
+}
+
+/* Slide 5 Specific CSS */
+.metric-bar-bg {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Slide 7 Specific CSS (Utilization) */
+.glass-card {
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(30, 41, 59, 0.9);
+  transform: translateY(-2px);
+}
+
+.progress-track {
+  background-color: rgba(148, 163, 184, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.utilization-high {
+  background-color: #10b981;
+}
+
+.utilization-med {
+  background-color: #f59e0b;
+}
+
+.utilization-low {
+  background-color: #3b82f6;
+}
+
+.utilization-dormant {
+  background-color: #ef4444;
+}
+
+.border-high {
+  border-color: #10b981;
+}
+
+.border-med {
+  border-color: #f59e0b;
+}
+
+.border-low {
+  border-color: #3b82f6;
+}
+
+.border-dormant {
+  border-color: #ef4444;
+}
+
+.text-high {
+  color: #34d399;
+}
+
+.text-med {
+  color: #fbbf24;
+}
+
+.text-low {
+  color: #60a5fa;
+}
+
+.text-dormant {
+  color: #f87171;
+}
+
+/* Slide 8 Specific CSS */
+.glass-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(148, 163, 184, 0.3);
+  background: rgba(30, 41, 59, 0.8);
+}
+
+.status-badge {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+.department-row {
+  transition: background-color 0.2s;
+}
+
+.department-row:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Slide 9 Specific CSS */
+.glass-card:hover {
+  transform: translateY(-5px);
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.card-icon-bg {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recommendation-box {
+  background: rgba(15, 23, 42, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Slide 10 Specific CSS */
+.glass-card-highlight {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  box-shadow: 0 0 40px rgba(251, 191, 36, 0.05);
+}
+
+.number-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.gold-gradient-text {
+  color: #fbbf24;
+}
+
+.stat-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 1.5rem 0;
+}
+
+/* Slide 11 Specific CSS */
+.issue-card {
+  background: rgba(30, 41, 59, 0.4);
+  border-left: 4px solid #ef4444;
+  transition: transform 0.2s;
+}
+
+.issue-card:hover {
+  background: rgba(30, 41, 59, 0.8);
+  transform: translateX(5px);
+}
+
+.paradox-divider {
+  position: relative;
+  height: 2px;
+  background-color: rgba(239, 68, 68, 0.3);
+  margin: 2rem 0;
+}
+
+.paradox-divider::after {
+  content: '\f0c1';
+  /* fa-unlink */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #0B1120;
+  color: #ef4444;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+}
+
+/* Slide 12 Specific CSS */
+.task-card {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.task-card:hover {
+  transform: translateX(8px);
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.timeline-line {
+  position: absolute;
+  left: 24px;
+  top: 40px;
+  bottom: 40px;
+  width: 2px;
+  background: rgba(71, 85, 105, 0.5);
+  z-index: 0;
+}
+
+.checkbox-custom {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #4b5563;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item-active {
+  background: #2563EB;
+  color: white;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+}
+
+.nav-item-inactive {
+  background: rgba(30, 41, 59, 0.5);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.nav-item-completed {
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Slide 15 Specific CSS (Chart) */
+.glass-card {
+  border-radius: 1rem;
+}
+
+.chart-container {
+  position: relative;
+  height: 180px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.metric-value {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.metric-label {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.target-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+/* Slide 16 Specific CSS */
+.glass-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.priority-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  line-height: 1;
+  position: absolute;
+  right: -10px;
+  top: -20px;
+  opacity: 0.05;
+  font-weight: 700;
+  color: white;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.enabler-item {
+  background: rgba(15, 23, 42, 0.6);
+  border-left: 3px solid #3b82f6;
+  transition: background 0.3s;
+}
+
+.enabler-item:hover {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+}
+
+.glow-amber {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+}
+
+/* Slide 18/19 Specific */
+.staff-pill {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  white-space: nowrap;
+}
+
+.strategy-box {
+  margin-top: auto;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-big {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.dept-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.big-number {
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.step-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  position: relative;
+}
+
+.step-line {
+  position: absolute;
+  left: 24px;
+  top: 48px;
+  bottom: -24px;
+  width: 2px;
+  background: rgba(59, 130, 246, 0.2);
+  z-index: 0;
+}
+
+.last-step .step-line {
+  display: none;
+}

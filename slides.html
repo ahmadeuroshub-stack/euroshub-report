@@ -1,0 +1,3540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Executive Workforce Master Deck</title>
+
+    <!-- EXTERNAL LIBRARIES -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- MASTER STYLES -->
+    <style>
+        /* MASTER RESET & LAYOUT */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #0B1120;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            /* Allow scrolling */
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+        }
+
+        /* SCROLL SNAP CONTAINER OVERRIDES */
+        .slide-container {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #0B1120;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
+            /* Allow internal scrolling on mobile */
+        }
+
+        @media (min-width: 1024px) {
+            .slide-container {
+                height: 100vh !important;
+                overflow-y: hidden;
+                /* Lock height on desktop */
+            }
+        }
+
+        /* Responsive Text Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem !important;
+            }
+
+            .text-6xl {
+                font-size: 2.5rem !important;
+            }
+
+            .text-7xl {
+                font-size: 3rem !important;
+            }
+
+            .px-12 {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+
+            .py-8 {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+        }
+
+        .responsive-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* GLOBAL PREMIUM AESTHETICS (Ensure consistency if missing in chunks) */
+        .glass-card,
+        .glass-panel,
+        .action-card {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        /* HIDE SCROLLBAR BUT ALLOW SCROLLING */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        /* PRINT STYLES FOR PDF MASTERING */
+        @media print {
+            body {
+                background-color: #0B1120 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                overflow: visible !important;
+                height: auto !important;
+            }
+
+            .slide-container {
+                page-break-after: always !important;
+                page-break-inside: avoid !important;
+                height: 100vh !important;
+                min-height: 100vh !important;
+                scroll-snap-align: none !important;
+                position: relative !important;
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+
+            .bg-grid {
+                background-color: #0B1120 !important;
+                background-image: none !important;
+                /* Hide grid on print for cleaner PDF */
+            }
+
+            /* Ensure all charts and icons show up */
+            canvas,
+            i,
+            .fas,
+            .far {
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+
+            /* Hide any floating UI if they exist */
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* Slide 1 Specific CSS */
+
+
+
+
+
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Slide 2 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+        }
+
+        /* Slide 3 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+        }
+
+        /* Slide 4 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+        }
+
+        .profile-card {
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid;
+            transition: transform 0.2s;
+        }
+
+        .profile-card:hover {
+            transform: translateX(4px);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        /* Slide 5 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+        }
+
+        .metric-bar-bg {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Slide 6 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+        }
+
+        .metric-bar-bg {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Slide 7 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(30, 41, 59, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .progress-track {
+            background-color: rgba(148, 163, 184, 0.1);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .utilization-high {
+            background-color: #10b981;
+        }
+
+        /* Emerald-500 */
+        .utilization-med {
+            background-color: #f59e0b;
+        }
+
+        /* Amber-500 */
+        .utilization-low {
+            background-color: #3b82f6;
+        }
+
+        /* Blue-500 */
+        .utilization-dormant {
+            background-color: #ef4444;
+        }
+
+        /* Red-500 */
+
+        .border-high {
+            border-color: #10b981;
+        }
+
+        .border-med {
+            border-color: #f59e0b;
+        }
+
+        .border-low {
+            border-color: #3b82f6;
+        }
+
+        .border-dormant {
+            border-color: #ef4444;
+        }
+
+        .text-high {
+            color: #34d399;
+        }
+
+        .text-med {
+            color: #fbbf24;
+        }
+
+        .text-low {
+            color: #60a5fa;
+        }
+
+        .text-dormant {
+            color: #f87171;
+        }
+
+        /* Slide 8 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(148, 163, 184, 0.3);
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .status-badge {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+        }
+
+        /* Custom scrollbar for table if needed, though fixed layout prefers no scroll */
+        .department-row {
+            transition: background-color 0.2s;
+        }
+
+        .department-row:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Slide 9 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(148, 163, 184, 0.3);
+        }
+
+        .card-icon-bg {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .recommendation-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Slide 10 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card-highlight {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            /* Amber border */
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.05);
+        }
+
+        .number-glow {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .gold-gradient-text {
+            color: #fbbf24;
+        }
+
+        .stat-divider {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 1.5rem 0;
+        }
+
+        /* Slide 11 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+        }
+
+        .issue-card {
+            background: rgba(30, 41, 59, 0.4);
+            border-left: 4px solid #ef4444;
+            transition: transform 0.2s;
+        }
+
+        .issue-card:hover {
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateX(5px);
+        }
+
+        .paradox-divider {
+            position: relative;
+            height: 2px;
+            background-color: rgba(239, 68, 68, 0.3);
+            margin: 2rem 0;
+        }
+
+        .paradox-divider::after {
+            content: '\f0c1';
+            /* fa-unlink */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0B1120;
+            color: #ef4444;
+            padding: 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Slide 12 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            transition: all 0.3s ease;
+        }
+
+        .task-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .task-card:hover {
+            transform: translateX(8px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 40px;
+            bottom: 40px;
+            width: 2px;
+            background: rgba(71, 85, 105, 0.5);
+            z-index: 0;
+        }
+
+        .checkbox-custom {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #4b5563;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-item-active {
+            background: #2563EB;
+            color: white;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+        }
+
+        .nav-item-inactive {
+            background: rgba(30, 41, 59, 0.5);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        /* Slide 13 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .task-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .task-card:hover {
+            transform: translateX(8px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 40px;
+            bottom: 40px;
+            width: 2px;
+            background: rgba(71, 85, 105, 0.5);
+            z-index: 0;
+        }
+
+        .checkbox-custom {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #4b5563;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-item-active {
+            background: #2563EB;
+            color: white;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+        }
+
+        .nav-item-inactive {
+            background: rgba(30, 41, 59, 0.5);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .nav-item-completed {
+            background: rgba(16, 185, 129, 0.1);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* Slide 14 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            transition: all 0.3s ease;
+        }
+
+        .task-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .task-card:hover {
+            transform: translateX(8px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 40px;
+            bottom: 40px;
+            width: 2px;
+            background: rgba(71, 85, 105, 0.5);
+            z-index: 0;
+        }
+
+        .checkbox-custom {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #4b5563;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-item-active {
+            background: #2563EB;
+            color: white;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+        }
+
+        .nav-item-inactive {
+            background: rgba(30, 41, 59, 0.5);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        /* Slide 15 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            border-radius: 1rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 180px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .metric-value {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .metric-label {
+            color: #94a3b8;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        .target-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            color: #cbd5e1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        /* Slide 16 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .priority-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            line-height: 1;
+            position: absolute;
+            right: -10px;
+            top: -20px;
+            opacity: 0.05;
+            font-weight: 700;
+            color: white;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .icon-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .enabler-item {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid #3b82f6;
+            transition: background 0.3s;
+        }
+
+        .enabler-item:hover {
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .glow-emerald {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+
+        .glow-amber {
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+        }
+
+        /* Slide 17 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .priority-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            line-height: 1;
+            position: absolute;
+            right: -10px;
+            top: -20px;
+            opacity: 0.05;
+            font-weight: 700;
+            color: white;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .icon-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .enabler-item {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid #3b82f6;
+            transition: background 0.3s;
+        }
+
+        .enabler-item:hover {
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .glow-emerald {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+
+        .glow-amber {
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+        }
+
+        /* Slide 18 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .staff-pill {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: #cbd5e1;
+            white-space: nowrap;
+        }
+
+        .strategy-box {
+            margin-top: auto;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-big {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .dept-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Slide 19 Specific CSS */
+
+
+
+
+
+        .bg-grid {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: none;
+            border-radius: 1.5rem;
+        }
+
+        .action-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .action-card:hover {
+            background: rgba(30, 58, 138, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateX(10px);
+        }
+
+        .big-number {
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .step-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            position: relative;
+        }
+
+        .step-line {
+            position: absolute;
+            left: 24px;
+            top: 48px;
+            bottom: -24px;
+            width: 2px;
+            background: rgba(59, 130, 246, 0.2);
+            z-index: 0;
+        }
+
+        .last-step .step-line {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- === TITLE SLIDE === -->
+    <!-- === TITLE SLIDE === -->
+    <div
+        class="slide-container bg-grid relative overflow-hidden flex flex-col md:flex-row items-center justify-center md:items-center px-6 md:px-16 py-20 md:py-0">
+        <!-- Main Content (Left) -->
+        <div class="z-10 w-full md:max-w-3xl relative text-center md:text-left">
+            <!-- Confidential Badge -->
+            <div
+                class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-red-500/30 bg-red-950/30 text-red-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-10 shadow-[0_0_15px_rgba(239,68,68,0.1)]">
+                <span
+                    class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
+                Confidential Report
+            </div>
+
+            <!-- Title Block -->
+            <h1 class="mb-8">
+                <span class="block text-3xl font-light text-blue-200 mb-2 tracking-wide font-sans opacity-90">Executive
+                    Workforce <span class="text-blue-500/50">&</span></span>
+                <span
+                    class="block text-7xl font-['Playfair_Display'] font-bold text-white leading-tight tracking-tight drop-shadow-lg">
+                    Capacity <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300">Analysis</span>
+                </span>
+            </h1>
+
+            <!-- Decorative Line -->
+            <div class="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-8"></div>
+
+            <!-- Subtitle/Context -->
+            <div class="space-y-4">
+                <p class="text-2xl text-white font-light leading-relaxed">
+                    Comprehensive Utilization Review <br />
+                    <span class="text-blue-200 font-normal">& Revenue Optimization Strategy</span>
+                </p>
+
+                <div class="flex items-center gap-4 mt-8 pt-8 border-t border-white/5 max-w-lg">
+                    <div class="text-right pr-4 border-r border-white/10">
+                        <p class="text-[10px] text-blue-400 uppercase tracking-widest font-bold">Assessment Period</p>
+                        <p class="text-white font-mono text-sm">Aug 2025 — Jan 2026</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-blue-400 uppercase tracking-widest font-bold">Generated For</p>
+                        <p class="text-white font-mono text-sm">Executive Leadership</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <!-- === SLIDE 1 === -->
+    <div class="slide-container bg-grid">
+        <!-- Header -->
+        <header class="w-full px-12 pt-8 pb-4 flex justify-between items-end border-b border-gray-800">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Executive
+                    Workforce & Capacity Analysis</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Workforce Analysis &amp;
+                    Strategic Outlook •
+                    February 2026</p>
+            </div>
+            <!-- Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <!-- Main Content Area -->
+        <main class="flex-1 px-12 py-8 flex flex-col justify-start md:justify-between space-y-6 md:space-y-0">
+            <!-- Key Metrics Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:h-64 mb-6">
+                <!-- Metric 1: Operational Stability -->
+                <div
+                    class="glass-card rounded-xl p-6 border-t-4 border-blue-500 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 text-blue-400 opacity-20">
+                        <i class="fas fa-server text-6xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold mb-2">Current Capacity
+                        </p>
+                        <div class="flex items-baseline space-x-2">
+                            <h2 class="text-5xl font-bold text-white font-['Playfair_Display']">1,688</h2>
+                            <span class="text-xl text-gray-300">hrs</span>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-blue-200 text-sm leading-relaxed">
+                            <span class="font-bold text-white">7 Active IDs</span> showing stable month-over-month
+                            performance. Core operational baseline established.
+                        </p>
+                    </div>
+                </div>
+                <!-- Metric 2: The Critical Gap -->
+                <div
+                    class="glass-card rounded-xl p-6 border-t-4 border-red-500 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 text-red-400 opacity-20">
+                        <i class="fas fa-triangle-exclamation text-6xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-sm uppercase tracking-wider font-semibold mb-2">Operational Risk
+                        </p>
+                        <h2 class="text-5xl font-bold text-red-400 font-['Playfair_Display']">66%</h2>
+                        <p class="text-red-300 text-lg font-medium mt-1">Untracked "Ghost Work"</p>
+                    </div>
+                    <div class="mt-4">
+                        <div class="w-full bg-gray-700 h-2 rounded-full mb-2">
+                            <div class="bg-red-500 h-2 rounded-full" style="width: 66%"></div>
+                        </div>
+                        <p class="text-gray-300 text-xs">
+                            Majority of paid graphic design work is currently invisible to tracking systems.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Strategic Priorities Section -->
+            <div class="glass-card rounded-xl p-6 border-l-4 border-indigo-500 flex-1 flex flex-col">
+                <div class="flex items-center mb-4 border-b border-gray-700 pb-3">
+                    <i class="fas fa-bullseye text-indigo-400 text-xl mr-3"></i>
+                    <h3 class="text-xl font-bold text-white font-['Playfair_Display']">Immediate Strategic Priorities
+                    </h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 h-full items-center py-4 md:py-0">
+                    <!-- Priority 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 text-blue-300 flex items-center justify-center font-bold border border-blue-500">
+                            1</div>
+                        <div>
+                            <h4 class="text-white font-semibold mb-1">Fix Tracking Systems</h4>
+                            <p class="text-sm text-gray-400 leading-snug">Implement mandatory "Upwork-first" logging for
+                                all revisions and internal tasks to eliminate ghost work.</p>
+                        </div>
+                    </div>
+                    <!-- Priority 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 text-blue-300 flex items-center justify-center font-bold border border-blue-500">
+                            2</div>
+                        <div>
+                            <h4 class="text-white font-semibold mb-1">Optimize Utilization</h4>
+                            <p class="text-sm text-gray-400 leading-snug">Fill the ~78% unused capacity in Graphic
+                                Design IDs and ~49% in VA IDs with billable contracts.</p>
+                        </div>
+                    </div>
+                    <!-- Priority 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 text-white flex items-center justify-center font-bold border border-blue-500">
+                            3</div>
+                        <div>
+                            <h4 class="text-white font-semibold mb-1">Activate Bench</h4>
+                            <p class="text-sm text-gray-400 leading-snug">Package and sell Digital Marketing services to
+                                utilize the 213 available hours in the department.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+
+    </div>
+
+    <!-- === SLIDE 3 === -->
+
+
+    <div class="slide-container bg-grid">
+        <!-- Header -->
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Monthly
+                    Performance Trends</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Consolidated Hours &amp; Active
+                    Workforce IDs
+                    • Aug 2025 – Jan 2026</p>
+            </div>
+            <!-- Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-1 px-12 py-8 flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8 overflow-y-auto">
+            <!-- Chart Section -->
+            <div class="w-full lg:w-3/4 glass-panel rounded-xl p-6 flex flex-col relative min-h-[400px]">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-white font-semibold text-lg flex items-center">
+                        <i class="fas fa-chart-mixed mr-2 text-white"></i>
+                        Workforce Output vs. Active IDs
+                    </h3>
+                    <div class="flex items-center space-x-4 text-xs">
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 bg-blue-500 rounded-sm mr-2"></span>
+                            <span class="text-white">Total Hours (Left Axis)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
+                            <span class="text-white">Active IDs (Right Axis)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative flex-grow w-full h-full">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+            <!-- Insights Sidebar -->
+            <div class="w-full lg:w-1/4 flex flex-col space-y-6">
+                <!-- Summary Card -->
+                <div class="glass-panel rounded-xl p-6 border-l-4 border-blue-500">
+                    <h4 class="text-white uppercase text-xs font-bold tracking-widest mb-2">Total Output</h4>
+                    <div class="flex items-baseline space-x-2">
+                        <span class="text-4xl font-bold text-white font-['Playfair_Display']">10,675</span>
+                        <span class="text-sm text-gray-300">hrs</span>
+                    </div>
+                    <p class="text-gray-300 text-xs mt-2">Cumulative tracked hours over 6-month period</p>
+                </div>
+                <!-- Trend Insight Card -->
+                <div class="glass-panel rounded-xl p-6 border-l-4 border-emerald-500">
+                    <h4 class="text-white uppercase text-xs font-bold tracking-widest mb-2">Stability Analysis
+                    </h4>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-arrow-right-long text-white mr-2"></i>
+                        <span class="text-lg font-semibold text-white">Consistent Volume</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Hours remain relatively stable (~1,700h avg) despite seasonal fluctuations, showing a reliable
+                        baseline capacity.
+                    </p>
+                </div>
+                <!-- Growth Insight Card -->
+                <div class="glass-panel rounded-xl p-6 border-l-4 border-orange-500">
+                    <h4 class="text-white uppercase text-xs font-bold tracking-widest mb-2">Capacity Expansion</h4>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-user-plus text-white mr-2"></i>
+                        <span class="text-lg font-semibold text-white">Active IDs: 6 → 8</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Workforce IDs expanded in Nov 2025. However, Jan 2026 hours (1,688h) match Nov levels,
+                        indicating <span class="text-white font-semibold">new capacity is not yet fully
+                            utilized</span>.
+                    </p>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+
+    </div>
+    <script>
+        (function () {
+
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+
+            // Data Configuration
+            const months = ['Aug 2025', 'Sep 2025', 'Oct 2025', 'Nov 2025', 'Dec 2025', 'Jan 2026'];
+            const totalHours = [1838.5, 1708.0, 1738.8, 1688.7, 2013.3, 1688.2];
+            const activeIDs = [6, 6, 6, 7, 7, 8];
+
+            const performanceChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: months,
+                    datasets: [
+                        {
+                            label: 'Total Hours',
+                            data: totalHours,
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)', // Blue-500
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            order: 2,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Active IDs',
+                            data: activeIDs,
+                            type: 'line',
+                            borderColor: 'rgba(249, 115, 22, 1)', // Orange-500
+                            backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#fff',
+                            pointBorderColor: 'rgba(249, 115, 22, 1)',
+                            pointRadius: 6,
+                            pointHoverRadius: 8,
+                            tension: 0.1,
+                            order: 1,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false // Custom legend built in HTML
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#cbd5e1',
+                            borderColor: 'rgba(59, 130, 246, 0.3)',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: true,
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y;
+                                        if (context.dataset.type === 'bar') label += ' hrs';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(148, 163, 184, 0.1)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Inter',
+                                    size: 12
+                                }
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            grid: {
+                                color: 'rgba(148, 163, 184, 0.1)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Inter',
+                                    size: 12
+                                },
+                                callback: function (value) {
+                                    return value + 'h';
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Total Hours',
+                                color: '#cbd5e1',
+                                font: {
+                                    size: 10,
+                                    weight: 'bold'
+                                }
+                            },
+                            suggestedMax: 2200
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false, // only want the grid lines for one axis to show up
+                            },
+                            ticks: {
+                                color: '#fb923c', // Orange-400
+                                stepSize: 1,
+                                font: {
+                                    family: 'Inter',
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Active IDs',
+                                color: '#fb923c',
+                                font: {
+                                    size: 10,
+                                    weight: 'bold'
+                                }
+                            },
+                            min: 0,
+                            max: 10
+                        }
+                    },
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            });
+
+        })();
+    </script>
+
+    <!-- === SLIDE 4 === -->
+
+
+    <div class="slide-container bg-grid">
+        <!-- Header -->
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">Top
+                    Performers Overview</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">6-Month Output Leaders • Aug 2025
+                    – Jan 2026</p>
+            </div>
+            <!-- Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-1 px-12 py-4 flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6 overflow-y-auto">
+            <!-- Left Column: Chart -->
+            <div class="w-full lg:w-7/12 flex flex-col glass-panel rounded-xl p-4 min-h-[300px]">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-white font-semibold text-lg flex items-center">
+                        <i class="fas fa-chart-bar mr-2 text-white"></i>
+                        Total Tracked Hours (6-Month Cumulative)
+                    </h3>
+                </div>
+                <div class="relative flex-grow w-full h-full">
+                    <canvas id="performersChart"></canvas>
+                </div>
+            </div>
+            <!-- Right Column: Profiles -->
+            <div
+                class="w-full lg:w-5/12 grid grid-cols-1 sm:grid-cols-2 gap-3 overflow-y-visible lg:overflow-y-auto custom-scrollbar pr-2 h-full content-start pb-8 lg:pb-0">
+                <h3 class="col-span-full text-white font-semibold text-lg mb-1 pl-2 border-l-2 border-blue-500">Key
+                    Contributors</h3>
+                <!-- Profile 1: Laiba -->
+                <div class="profile-card rounded-r-xl p-3 border-blue-500 flex flex-col justify-center">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-blue-300 mr-2 border border-blue-600">
+                                <i class="fas fa-pen-nib text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Laiba</h4>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-white font-['Playfair_Display']">2,772</p>
+                            <p class="text-[9px] text-gray-400">Hours</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile 2: Saira -->
+                <div class="profile-card rounded-r-xl p-3 border-emerald-500 flex flex-col justify-center">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-emerald-900 flex items-center justify-center text-emerald-300 mr-2 border border-emerald-600">
+                                <i class="fas fa-headset text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Saira</h4>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-white font-['Playfair_Display']">2,474</p>
+                            <p class="text-[9px] text-gray-400">Hours</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile 3: Asif -->
+                <div class="profile-card rounded-r-xl p-3 border-purple-500 flex flex-col justify-center">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-purple-900 flex items-center justify-center text-purple-300 mr-2 border border-purple-600">
+                                <i class="fas fa-users-cog text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Asif</h4>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-white font-['Playfair_Display']">2,278</p>
+                            <p class="text-[9px] text-gray-400">Hours</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile: Waqar -->
+                <div
+                    class="profile-card rounded-r-xl p-3 border-cyan-500 flex flex-col bg-white/5 border-l-2 justify-center">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-cyan-900 flex items-center justify-center text-cyan-300 mr-2 border border-cyan-600">
+                                <i class="fas fa-laptop-code text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Waqar</h4>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-white font-['Playfair_Display']">1,150</p>
+                            <p class="text-[9px] text-gray-400">Hours</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile: Syeda -->
+                <div
+                    class="profile-card rounded-r-xl p-3 border-teal-500 flex flex-col bg-white/5 border-l-2 justify-center">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-teal-900 flex items-center justify-center text-teal-300 mr-2 border border-teal-600">
+                                <i class="fas fa-user-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Syeda</h4>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-white font-['Playfair_Display']">980</p>
+                            <p class="text-[9px] text-gray-400">Hours</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile: Kainat -->
+                <div
+                    class="profile-card rounded-r-xl p-3 border-pink-500 flex flex-col bg-white/5 border-l-2 justify-center">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-pink-900 flex items-center justify-center text-pink-300 mr-2 border border-pink-600">
+                                <i class="fas fa-palette text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Kainat</h4>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-white font-['Playfair_Display']">850</p>
+                            <p class="text-[9px] text-gray-400">Hours</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile: Zain -->
+                <div
+                    class="profile-card rounded-r-xl p-3 border-gray-500 flex flex-col bg-white/5 border-l-2 justify-center">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-gray-900 flex items-center justify-center text-gray-300 mr-2 border border-gray-600">
+                                <i class="fas fa-user-clock text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Zain</h4>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-white font-['Playfair_Display']">171</p>
+                            <p class="text-[9px] text-gray-400">Hours</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile: Jibran -->
+                <div
+                    class="profile-card rounded-r-xl p-3 border-amber-500 flex flex-col bg-white/5 border-l-2 justify-center">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-amber-900 flex items-center justify-center text-amber-300 mr-2 border border-amber-600">
+                                <i class="fas fa-code text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Jibran</h4>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-white font-['Playfair_Display']">26</p>
+                            <p class="text-[9px] text-gray-400">Hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+
+    </div>
+    <script>
+        const ctx = document.getElementById('performersChart').getContext('2d');
+
+        const performersChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Laiba', 'Saira', 'Asif', 'Waqar', 'Syeda', 'Kainat', 'Zain', 'Jibran'],
+                datasets: [{
+                    label: 'Total Hours (6-Month)',
+                    data: [2772, 2474, 2278, 1150, 980, 850, 171, 26],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.7)',   // Blue for Laiba
+                        'rgba(16, 185, 129, 0.7)',   // Emerald for Saira
+                        'rgba(168, 85, 247, 0.7)',   // Purple for Asif
+                        'rgba(6, 182, 212, 0.7)',    // Cyan for Waqar
+                        'rgba(20, 184, 166, 0.7)',   // Teal for Syeda
+                        'rgba(236, 72, 153, 0.7)',   // Pink for Kainat
+                        'rgba(156, 163, 175, 0.7)',  // Gray for Zain
+                        'rgba(245, 158, 11, 0.7)'    // Amber for Jibran
+                    ],
+                    borderColor: [
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(168, 85, 247, 1)',
+                        'rgba(6, 182, 212, 1)',
+                        'rgba(20, 184, 166, 1)',
+                        'rgba(236, 72, 153, 1)',
+                        'rgba(156, 163, 175, 1)',
+                        'rgba(245, 158, 11, 1)'
+                    ],
+                    borderWidth: 1,
+                    maxBarThickness: 20,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y', // Horizontal bar chart
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        titleColor: '#fff',
+                        bodyColor: '#cbd5e1',
+                        borderColor: 'rgba(148, 163, 184, 0.2)',
+                        borderWidth: 1,
+                        padding: 12,
+                        callbacks: {
+                            label: function (context) {
+                                return context.raw.toLocaleString() + ' Hours';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            color: 'rgba(148, 163, 184, 0.1)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: { family: 'Inter' }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Cumulative Hours (Aug 2025 - Jan 2026)',
+                            color: '#cbd5e1',
+                            font: { size: 10, weight: 'bold' }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            autoSkip: false,
+                            color: '#e2e8f0', // Lighter text for names
+                            font: {
+                                family: 'Inter',
+                                size: 11,
+                                weight: '600'
+                            }
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        right: 20
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+    </script>
+
+    <!-- === SLIDE 5 === -->
+
+
+    <div class="slide-container bg-grid">
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 z-10 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Total Timeline
+                    Summary</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Cumulative tracked hours per ID
+                    (Aug '25 - Jan
+                    '26)</p>
+            </div>
+        </header>
+        <main class="flex-1 px-12 py-8 overflow-y-auto flex flex-col items-center justify-start md:justify-center">
+            <div class="glass-card w-full h-full p-0 overflow-hidden flex-1 flex flex-col">
+                <div
+                    class="grid grid-cols-2 md:grid-cols-4 bg-blue-900/40 p-3 border-b border-blue-500/20 font-bold text-white uppercase tracking-wider text-[10px] md:text-sm">
+                    <div class="col-span-1">Upwork ID</div>
+                    <div class="col-span-1 text-center">Total Output</div>
+                    <div class="hidden md:block col-span-1 text-center">Peak Month</div>
+                    <div class="hidden md:block col-span-1 text-right">Status</div>
+                </div>
+                <div class="overflow-y-auto flex-1 p-2 space-y-2">
+
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white items-center transition-colors border border-transparent hover:border-blue-500/30">
+                        <div class="col-span-1 font-bold text-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs"><i
+                                    class="fas fa-user"></i></div>
+                            Kainat
+                        </div>
+                        <div class="col-span-1 text-center font-['Playfair_Display'] text-xl text-blue-300">1120.8 hrs
+                        </div>
+                        <div class="hidden md:block col-span-1 text-center text-sm font-mono opacity-80">2025-09 (297h)
+                        </div>
+                        <div class="hidden md:block col-span-1 text-right">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-emerald-900/30 text-emerald-400 border border-emerald-500/20">Active</span>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white items-center transition-colors border border-transparent hover:border-blue-500/30">
+                        <div class="col-span-1 font-bold text-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs"><i
+                                    class="fas fa-user"></i></div>
+                            Laiba
+                        </div>
+                        <div class="col-span-1 text-center font-['Playfair_Display'] text-xl text-blue-300">2771.8 hrs
+                        </div>
+                        <div class="hidden md:block col-span-1 text-center text-sm font-mono opacity-80">2025-08 (687h)
+                        </div>
+                        <div class="hidden md:block col-span-1 text-right">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-emerald-900/30 text-emerald-400 border border-emerald-500/20">Active</span>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white items-center transition-colors border border-transparent hover:border-blue-500/30">
+                        <div class="col-span-1 font-bold text-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs"><i
+                                    class="fas fa-user"></i></div>
+                            Saira
+                        </div>
+                        <div class="col-span-1 text-center font-['Playfair_Display'] text-xl text-blue-300">2473.7 hrs
+                        </div>
+                        <div class="hidden md:block col-span-1 text-center text-sm font-mono opacity-80">2025-11 (457h)
+                        </div>
+                        <div class="hidden md:block col-span-1 text-right">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-emerald-900/30 text-emerald-400 border border-emerald-500/20">Active</span>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white items-center transition-colors border border-transparent hover:border-blue-500/30">
+                        <div class="col-span-1 font-bold text-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs"><i
+                                    class="fas fa-user"></i></div>
+                            Asif
+                        </div>
+                        <div class="col-span-1 text-center font-['Playfair_Display'] text-xl text-blue-300">2277.7 hrs
+                        </div>
+                        <div class="hidden md:block col-span-1 text-center text-sm font-mono opacity-80">2025-08 (418h)
+                        </div>
+                        <div class="hidden md:block col-span-1 text-right">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-emerald-900/30 text-emerald-400 border border-emerald-500/20">Active</span>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white items-center transition-colors border border-transparent hover:border-blue-500/30">
+                        <div class="col-span-1 font-bold text-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs"><i
+                                    class="fas fa-user"></i></div>
+                            Waqar
+                        </div>
+                        <div class="col-span-1 text-center font-['Playfair_Display'] text-xl text-blue-300">1271.2 hrs
+                        </div>
+                        <div class="hidden md:block col-span-1 text-center text-sm font-mono opacity-80">2025-12 (325h)
+                        </div>
+                        <div class="hidden md:block col-span-1 text-right">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-emerald-900/30 text-emerald-400 border border-emerald-500/20">Active</span>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white items-center transition-colors border border-transparent hover:border-blue-500/30">
+                        <div class="col-span-1 font-bold text-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs"><i
+                                    class="fas fa-user"></i></div>
+                            Syeda
+                        </div>
+                        <div class="col-span-1 text-center font-['Playfair_Display'] text-xl text-blue-300">760.3 hrs
+                        </div>
+                        <div class="hidden md:block col-span-1 text-center text-sm font-mono opacity-80">2026-01 (190h)
+                        </div>
+                        <div class="hidden md:block col-span-1 text-right">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-emerald-900/30 text-emerald-400 border border-emerald-500/20">Active</span>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white items-center transition-colors border border-transparent hover:border-blue-500/30">
+                        <div class="col-span-1 font-bold text-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center text-xs"><i
+                                    class="fas fa-code"></i></div>
+                            Jibran
+                        </div>
+                        <div class="col-span-1 text-center font-['Playfair_Display'] text-xl text-amber-300">26.0 hrs
+                        </div>
+                        <div class="hidden md:block col-span-1 text-center text-sm font-mono opacity-80">2026-01 (10h)
+                        </div>
+                        <div class="hidden md:block col-span-1 text-right">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-emerald-900/30 text-emerald-400 border border-emerald-500/20">Active</span>
+                        </div>
+                    </div>
+                    <div
+                        class="grid grid-cols-2 md:grid-cols-4 p-2 rounded-lg bg-gray-800/30 text-gray-400 items-center transition-colors border border-transparent hover:border-blue-500/30">
+                        <div class="col-span-1 font-bold text-lg flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-xs"><i
+                                    class="fas fa-user"></i></div>
+                            Zain
+                        </div>
+                        <div class="col-span-1 text-center font-['Playfair_Display'] text-xl ">0.0 hrs</div>
+                        <div class="col-span-1 text-center text-sm font-mono opacity-80">N/A (0h)</div>
+                        <div class="col-span-1 text-right">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-red-900/30 text-red-400 border border-red-500/20">Inactive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+
+
+
+
+    <!-- === SLIDE 2 === -->
+
+
+    <div class="slide-container bg-grid">
+        <!-- Header -->
+        <header class="w-full px-12 pt-8 pb-4 flex justify-between items-end border-b border-gray-800">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-4xl text-white font-bold tracking-tight mb-2">Upwork ID
+                    Capacity Analysis</h1>
+                <p class="text-blue-400 text-lg font-light tracking-wide">Utilization Dashboard &amp; Available Headroom
+                    • January 2026</p>
+            </div>
+            <!-- Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-1 px-12 py-8 flex flex-col space-y-6 overflow-y-auto">
+            <!-- Top Row: High & Medium Utilization -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Saira (High) -->
+                <div class="glass-card p-6 rounded-xl border-l-4 border-high relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">Saira</h3>
+                            <p class="text-gray-400 text-xs uppercase tracking-wide">VA / Support</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-2xl font-bold text-high font-mono">65%</span>
+                            <p class="text-gray-300 text-[10px] uppercase">Utilized</p>
+                        </div>
+                    </div>
+                    <div class="w-full progress-track h-3 rounded-full mb-4 overflow-hidden">
+                        <div class="h-full utilization-high rounded-full" style="width: 65%"></div>
+                    </div>
+                    <div class="flex justify-between text-sm border-t border-gray-700 pt-3">
+                        <div class="flex flex-col">
+                            <span class="text-gray-400 text-xs">Tracked</span>
+                            <span class="text-white font-bold">94 hrs</span>
+                        </div>
+                        <div class="flex flex-col text-right">
+                            <span class="text-gray-400 text-xs">Available</span>
+                            <span class="text-high font-bold">50 hrs</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Asif (Med) -->
+                <div class="glass-card p-6 rounded-xl border-l-4 border-med relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">Asif</h3>
+                            <p class="text-gray-400 text-xs uppercase tracking-wide">Account Mgmt</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-2xl font-bold text-med font-mono">57%</span>
+                            <p class="text-gray-300 text-[10px] uppercase">Utilized</p>
+                        </div>
+                    </div>
+                    <div class="w-full progress-track h-3 rounded-full mb-4 overflow-hidden">
+                        <div class="h-full utilization-med rounded-full" style="width: 57%"></div>
+                    </div>
+                    <div class="flex justify-between text-sm border-t border-gray-700 pt-3">
+                        <div class="flex flex-col">
+                            <span class="text-gray-400 text-xs">Tracked</span>
+                            <span class="text-white font-bold">82 hrs</span>
+                        </div>
+                        <div class="flex flex-col text-right">
+                            <span class="text-gray-400 text-xs">Available</span>
+                            <span class="text-med font-bold">62 hrs</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Waqar (Med) -->
+                <div class="glass-card p-6 rounded-xl border-l-4 border-med relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">Waqar</h3>
+                            <p class="text-gray-400 text-xs uppercase tracking-wide">VA / Tech</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-2xl font-bold text-med font-mono">52%</span>
+                            <p class="text-gray-300 text-[10px] uppercase">Utilized</p>
+                        </div>
+                    </div>
+                    <div class="w-full progress-track h-3 rounded-full mb-4 overflow-hidden">
+                        <div class="h-full utilization-med rounded-full" style="width: 52%"></div>
+                    </div>
+                    <div class="flex justify-between text-sm border-t border-gray-700 pt-3">
+                        <div class="flex flex-col">
+                            <span class="text-gray-400 text-xs">Tracked</span>
+                            <span class="text-white font-bold">75 hrs</span>
+                        </div>
+                        <div class="flex flex-col text-right">
+                            <span class="text-gray-400 text-xs">Available</span>
+                            <span class="text-med font-bold">69 hrs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Row: Low Utilization & Dormant -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <!-- Laiba (Low/Med) -->
+                <div class="glass-card p-4 rounded-xl border-l-4 border-low relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-white font-bold text-lg">Laiba</h3>
+                        <span class="text-low font-mono font-bold">44%</span>
+                    </div>
+                    <div class="w-full progress-track h-2 rounded-full mb-3 overflow-hidden">
+                        <div class="h-full utilization-low rounded-full" style="width: 44%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Tracked: <span class="text-white font-bold">63h</span></span>
+                        <span class="text-gray-400">Open: <span class="text-low font-bold">81h</span></span>
+                    </div>
+                </div>
+                <!-- Syeda (Low) -->
+                <div class="glass-card p-4 rounded-xl border-l-4 border-low relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-white font-bold text-lg">Syeda</h3>
+                        <span class="text-low font-mono font-bold">31%</span>
+                    </div>
+                    <div class="w-full progress-track h-2 rounded-full mb-3 overflow-hidden">
+                        <div class="h-full utilization-low rounded-full" style="width: 31%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Tracked: <span class="text-white font-bold">44h</span></span>
+                        <span class="text-gray-400">Open: <span class="text-low font-bold">100h</span></span>
+                    </div>
+                </div>
+                <!-- Kainat (Low) -->
+                <div class="glass-card p-4 rounded-xl border-l-4 border-low relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-white font-bold text-lg">Kainat</h3>
+                        <span class="text-low font-mono font-bold">24%</span>
+                    </div>
+                    <div class="w-full progress-track h-2 rounded-full mb-3 overflow-hidden">
+                        <div class="h-full utilization-low rounded-full" style="width: 24%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Tracked: <span class="text-white font-bold">35h</span></span>
+                        <span class="text-gray-400">Open: <span class="text-low font-bold">109h</span></span>
+                    </div>
+                </div>
+                <!-- Jibran (New/Low) -->
+                <div class="glass-card p-4 rounded-xl border-l-4 border-amber-500 relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-white font-bold text-lg">Jibran</h3>
+                        <span class="text-amber-400 font-mono font-bold">20%</span>
+                    </div>
+                    <div class="w-full progress-track h-2 rounded-full mb-3 overflow-hidden">
+                        <div class="h-full bg-amber-500 rounded-full" style="width: 20%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-400">Tracked: <span class="text-white font-bold">8h</span></span>
+                        <span class="text-gray-400">Open: <span class="text-amber-400 font-bold">32h</span></span>
+                    </div>
+                </div>
+                <!-- Zain (Dormant) -->
+                <div
+                    class="glass-card p-4 rounded-xl border-2 border-dashed border-red-500/50 bg-red-900/10 relative overflow-hidden">
+                    <div
+                        class="absolute -right-6 -top-6 bg-red-600 text-white text-[10px] font-bold px-8 py-1 rotate-45 shadow-lg">
+                        DORMANT</div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-red-300 font-bold text-lg">Zain</h3>
+                        <span class="text-red-400 font-mono font-bold">0%</span>
+                    </div>
+                    <div class="w-full progress-track h-2 rounded-full mb-3 overflow-hidden">
+                        <div class="h-full bg-transparent"></div>
+                    </div>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-gray-300">Tracked: <span class="text-gray-400">0h</span></span>
+                        <span class="text-gray-400">Open: <span class="text-red-400 font-bold">144h</span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Summary Insight -->
+            <div
+                class="glass-card rounded-xl p-4 flex flex-col md:flex-row items-center justify-between border-t border-blue-500/30 space-y-4 md:space-y-0 text-center md:text-left">
+                <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+                    <div class="flex flex-col px-4 md:border-r border-gray-700">
+                        <span class="text-gray-400 text-xs uppercase tracking-widest">Total Weekly Capacity</span>
+                        <span class="text-white font-['Playfair_Display'] text-2xl font-bold">1,008 <span
+                                class="text-sm font-sans font-normal text-gray-300">hrs</span></span>
+                    </div>
+                    <div class="flex flex-col px-4 border-r border-gray-700">
+                        <span class="text-gray-400 text-xs uppercase tracking-widest">Total Tracked</span>
+                        <span class="text-blue-400 font-['Playfair_Display'] text-2xl font-bold">399 <span
+                                class="text-sm font-sans font-normal text-gray-300">hrs</span></span>
+                    </div>
+                    <div class="flex flex-col px-4">
+                        <span class="text-gray-400 text-xs uppercase tracking-widest">Unused "Headroom"</span>
+                        <span class="text-white font-['Playfair_Display'] text-2xl font-bold">609 <span
+                                class="text-sm font-sans font-normal text-gray-300">hrs</span></span>
+                    </div>
+                </div>
+                <div
+                    class="flex items-center text-sm text-gray-300 bg-blue-900/30 px-4 py-2 rounded-lg border border-blue-500/30">
+                    <i class="fas fa-info-circle text-blue-400 mr-2"></i>
+                    <span>IDs can support another <strong>4 full-time</strong> staff members immediately.</span>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+
+    </div>
+
+    <!-- === SLIDE 8 === -->
+
+
+
+
+
+
+    <div class="slide-container bg-grid">
+        <!-- Header -->
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 z-10 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Department Deep
+                    Dive</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Available Capacity &amp;
+                    Utilization
+                    Opportunities</p>
+            </div>
+            <!-- Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-1 px-12 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto">
+            <!-- Card 1: Digital Marketing (High Opportunity) -->
+            <div class="glass-card rounded-2xl p-6 border-t-4 border-t-cyan-500">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="dept-icon-wrapper bg-cyan-900/40 text-cyan-400 border border-cyan-500/20">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div
+                        class="bg-cyan-900/30 text-white text-xs px-2 py-1 rounded border border-cyan-500/30 uppercase tracking-wider font-semibold">
+                        Primary Opportunity
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-1">Digital Marketing</h2>
+                <div class="flex items-baseline gap-2 mb-6">
+                    <span class="text-6xl text-white metric-big">213</span>
+                    <span class="text-gray-400 text-sm font-medium uppercase tracking-wide">Hours / Week</span>
+                </div>
+                <div class="mb-6">
+                    <p class="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-3">Talent Pool (6 Staff)
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="staff-pill">Eman Arif</span>
+                        <span class="staff-pill">Tabassum Munir</span>
+                        <span class="staff-pill">Ahsan Imran</span>
+                        <span class="staff-pill">Azam Sultan</span>
+                        <span class="staff-pill">Nayab Manzoor</span>
+                        <span class="staff-pill">Fahad Rafique</span>
+                    </div>
+                </div>
+                <div class="strategy-box bg-cyan-900/20 border border-cyan-500/20">
+                    <div class="flex items-center gap-2 text-white font-bold text-sm mb-2">
+                        <i class="fas fa-key"></i> Strategy: Bundle &amp; Sell
+                    </div>
+                    <p class="text-gray-300 text-sm leading-snug">
+                        Create "Growth Starter" packages combining SEO audits with monthly Social Media management.
+                        Immediate capacity for 5-6 full-time client accounts.
+                    </p>
+                </div>
+            </div>
+            <!-- Card 2: Virtual Assistants (Medium Opportunity) -->
+            <div class="glass-card rounded-2xl p-6 border-t-4 border-t-indigo-500">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="dept-icon-wrapper bg-indigo-900/40 text-indigo-400 border border-indigo-500/20">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div
+                        class="bg-indigo-900/30 text-indigo-300 text-xs px-2 py-1 rounded border border-indigo-500/30 uppercase tracking-wider font-semibold">
+                        Scalable Support
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-1">Virtual Assistants</h2>
+                <div class="flex items-baseline gap-2 mb-6">
+                    <span class="text-6xl text-indigo-400 metric-big">73</span>
+                    <span class="text-gray-400 text-sm font-medium uppercase tracking-wide">Hours / Week</span>
+                </div>
+                <div class="mb-6">
+                    <p class="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-3">Talent Pool (4 Staff)
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="staff-pill">Ahmad (Night)</span>
+                        <span class="staff-pill">Wasiq (Evening)</span>
+                        <span class="staff-pill">Ilsa (Evening)</span>
+                        <span class="staff-pill">Hamza</span>
+                    </div>
+                </div>
+                <div class="strategy-box bg-indigo-900/20 border border-indigo-500/20">
+                    <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm mb-2">
+                        <i class="fas fa-clock"></i> Strategy: Shift Coverage
+                    </div>
+                    <p class="text-gray-300 text-sm leading-snug">
+                        Sell 2 Full-Time Equivalent (FTE) roles targeting international clients needing Night/Evening
+                        coverage. Ideal for 24/7 customer support expansion.
+                    </p>
+                </div>
+            </div>
+            <!-- Card 3: Development (Niche Opportunity) -->
+            <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emerald-500">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="dept-icon-wrapper bg-emerald-900/40 text-emerald-400 border border-emerald-500/20">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div
+                        class="bg-emerald-900/30 text-white text-xs px-2 py-1 rounded border border-emerald-500/30 uppercase tracking-wider font-semibold">
+                        Technical Niche
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-1">Development</h2>
+                <div class="flex items-baseline gap-2 mb-6">
+                    <span class="text-6xl text-white metric-big">35</span>
+                    <span class="text-gray-400 text-sm font-medium uppercase tracking-wide">Hours / Week</span>
+                </div>
+                <div class="mb-6">
+                    <p class="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-3">Talent Pool (2
+                        Specialists)</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="staff-pill border-emerald-500/30 bg-emerald-900/40 text-emerald-100">Ali
+                            Rayyan</span>
+                        <span class="staff-pill border-amber-500/30 bg-amber-900/40 text-amber-100">Jibran</span>
+                    </div>
+                </div>
+                <div class="strategy-box bg-emerald-900/20 border border-emerald-500/20">
+                    <div class="flex items-center gap-2 text-white font-bold text-sm mb-2">
+                        <i class="fas fa-wrench"></i> Strategy: Tech Retainer
+                    </div>
+                    <p class="text-gray-300 text-sm leading-snug">
+                        Monetize as a high-margin "Tech Support &amp; Maintenance" retainer. Focus on landing page
+                        creation and website maintenance for existing design clients.
+                    </p>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+    </div>
+    <div class="slide-container bg-grid">
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 z-10 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Virtual
+                    Assistants Roster</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Capacity & Shift Analysis</p>
+            </div>
+            <!-- Standard Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <main class="flex-1 px-12 py-8 overflow-y-auto flex flex-col z-10">
+            <div class="glass-card w-full h-full p-6 overflow-hidden flex flex-col relative">
+                <!-- Grid Layout: Responsive Columns -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-y-auto content-start custom-scrollbar p-2 z-10">
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Syeda Alina Zahra</div>
+                            <div class="text-[10px] text-gray-400">VA • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Muhammad Ramzan</div>
+                            <div class="text-[10px] text-gray-400">VA • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Kiran Zaman</div>
+                            <div class="text-[10px] text-gray-400">VA • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Shahroze Shahid</div>
+                            <div class="text-[10px] text-gray-400">VA • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Mohsin Ali</div>
+                            <div class="text-[10px] text-gray-400">VA • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Hamayun</div>
+                            <div class="text-[10px] text-gray-400">VA • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Ashan Ali Asif</div>
+                            <div class="text-[10px] text-gray-400">VA • Night</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-yellow-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Muhammad Wasiq Zafar</div>
+                            <div class="text-[10px] text-gray-400">VA • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-white">20h Free</div>
+                            <div class="text-[10px] text-gray-300">Partial</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Alishba Chaudhry</div>
+                            <div class="text-[10px] text-gray-400">VA • Unknown</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Ahmad</div>
+                            <div class="text-[10px] text-gray-400">VA • Night</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-white">32h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-yellow-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Ilsa</div>
+                            <div class="text-[10px] text-gray-400">VA • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-white">15h Free</div>
+                            <div class="text-[10px] text-gray-300">Partial</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-yellow-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Hamza Ikram</div>
+                            <div class="text-[10px] text-gray-400">VA • Unknown</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-white">6h Free</div>
+                            <div class="text-[10px] text-gray-300">Partial</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-auto pt-4 border-t border-gray-700/50 flex justify-between text-[10px] text-gray-400">
+                    <span>Virtual Assistants Roster</span>
+                    <span>Total Staff: 12</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Generated Slide: Graphic Design Roster -->
+
+
+    <div class="slide-container bg-grid">
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 z-10 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Graphic Design
+                    Roster</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Capacity & Shift Analysis</p>
+            </div>
+            <!-- Standard Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <main class="flex-1 px-12 py-8 overflow-y-auto flex flex-col z-10">
+            <div class="glass-card w-full h-full p-6 overflow-hidden flex flex-col relative">
+                <!-- Grid Layout: Responsive Columns -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-y-auto content-start custom-scrollbar p-2 z-10">
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Faizan Ahmed</div>
+                            <div class="text-[10px] text-gray-400">GD • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Abdul Manan</div>
+                            <div class="text-[10px] text-gray-400">GD • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Daniyal Ahmed</div>
+                            <div class="text-[10px] text-gray-400">GD • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Uzam Liaqat</div>
+                            <div class="text-[10px] text-gray-400">GD • Night</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Awais Munir</div>
+                            <div class="text-[10px] text-gray-400">GD • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Fatima Hafeez</div>
+                            <div class="text-[10px] text-gray-400">GD • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Muhammad Saad</div>
+                            <div class="text-[10px] text-gray-400">GD • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Mahnoor</div>
+                            <div class="text-[10px] text-gray-400">GD • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Muhammad Huzaifa</div>
+                            <div class="text-[10px] text-gray-400">GD • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Muhammad Bilal</div>
+                            <div class="text-[10px] text-gray-400">GD • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-auto pt-4 border-t border-gray-700/50 flex justify-between text-[10px] text-gray-400">
+                    <span>Graphic Design Roster</span>
+                    <span>Total Staff: 2</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Generated Slide: Marketing & Ops Roster -->
+
+
+    <div class="slide-container bg-grid">
+        <!-- Header -->
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Shift
+                    Availability Matrix</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Operational Capacity by Time Zone
+                    &amp; Shift
+                    • January 2026</p>
+            </div>
+            <!-- Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-1 px-12 py-10 flex flex-col justify-start md:justify-center overflow-y-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 h-full md:max-h-[500px]">
+                <!-- Morning Shift -->
+                <div
+                    class="glass-card rounded-xl border-t-4 border-yellow-500 flex flex-col relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-sun text-8xl text-yellow-400"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div
+                                class="w-10 h-10 rounded-full bg-yellow-900/30 flex items-center justify-center border border-yellow-500/30 text-yellow-400">
+                                <i class="fas fa-coffee"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Morning Shift</h3>
+                                <p class="text-yellow-400/80 text-xs uppercase tracking-wider">08:00 - 16:00</p>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <span class="block text-4xl font-['Playfair_Display'] font-bold text-white mb-1">57 <span
+                                    class="text-lg font-sans font-normal text-gray-400">hrs</span></span>
+                            <span class="text-xs text-gray-400 uppercase tracking-wide">Weekly Capacity</span>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-gray-300 text-sm font-semibold mb-2">Personnel:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="bg-gray-800 text-gray-300 px-2 py-1 rounded text-xs border border-gray-700">SEO
+                                    Team</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-box p-4 mt-auto">
+                        <p class="text-yellow-400 text-xs font-bold uppercase mb-1"><i
+                                class="fas fa-lightbulb mr-1"></i> Recommendation</p>
+                        <p class="text-gray-300 text-sm leading-snug">Open for SEO &amp; Marketing client acquisition.
+                        </p>
+                    </div>
+                </div>
+                <!-- Evening Shift -->
+                <div
+                    class="glass-card rounded-xl border-t-4 border-indigo-500 flex flex-col relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-cloud-sun text-8xl text-indigo-400"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div
+                                class="w-10 h-10 rounded-full bg-indigo-900/30 flex items-center justify-center border border-indigo-500/30 text-indigo-400">
+                                <i class="fas fa-sunset"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Evening Shift</h3>
+                                <p class="text-indigo-400/80 text-xs uppercase tracking-wider">16:00 - 00:00</p>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <span class="block text-4xl font-['Playfair_Display'] font-bold text-white mb-1">35 <span
+                                    class="text-lg font-sans font-normal text-white">hrs</span></span>
+                            <span class="text-xs text-gray-400 uppercase tracking-wide">Weekly Capacity</span>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-gray-300 text-sm font-semibold mb-2">Personnel:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="bg-gray-800 text-white px-2 py-1 rounded text-xs border border-gray-700">Wasiq</span>
+                                <span
+                                    class="bg-gray-800 text-white px-2 py-1 rounded text-xs border border-gray-700">Ilsa</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-box p-4 mt-auto">
+                        <p class="text-indigo-400 text-xs font-bold uppercase mb-1"><i
+                                class="fas fa-exchange-alt mr-1"></i> Recommendation</p>
+                        <p class="text-gray-300 text-sm leading-snug">Ideal for VA/Admin overflow and timezone overlap.
+                        </p>
+                    </div>
+                </div>
+                <!-- Night Shift -->
+                <div
+                    class="glass-card rounded-xl border-t-4 border-blue-400 flex flex-col relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-moon text-8xl text-blue-400"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div
+                                class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center border border-blue-400/30 text-blue-300">
+                                <i class="fas fa-stars"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Night Shift</h3>
+                                <p class="text-blue-400/80 text-xs uppercase tracking-wider">00:00 - 08:00</p>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <span class="block text-4xl font-['Playfair_Display'] font-bold text-white mb-1">32 <span
+                                    class="text-lg font-sans font-normal text-gray-400">hrs</span></span>
+                            <span class="text-xs text-gray-400 uppercase tracking-wide">Weekly Capacity</span>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-gray-300 text-sm font-semibold mb-2">Personnel:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="bg-gray-800 text-gray-300 px-2 py-1 rounded text-xs border border-gray-700">Ahmad</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-box p-4 mt-auto">
+                        <p class="text-blue-400 text-xs font-bold uppercase mb-1"><i class="fas fa-user-clock mr-1"></i>
+                            Recommendation</p>
+                        <p class="text-gray-300 text-sm leading-snug">Sell 1 Full-Time Night VA contract immediately.
+                        </p>
+                    </div>
+                </div>
+                <!-- Flexible Shift -->
+                <div
+                    class="glass-card rounded-xl border-t-4 border-emerald-500 flex flex-col relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fas fa-layer-group text-8xl text-emerald-400"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div
+                                class="w-10 h-10 rounded-full bg-emerald-900/30 flex items-center justify-center border border-emerald-500/30 text-emerald-400">
+                                <i class="fas fa-shuffle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Flexible / Task</h3>
+                                <p class="text-emerald-400/80 text-xs uppercase tracking-wider">Project Based</p>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <span class="block text-4xl font-['Playfair_Display'] font-bold text-white mb-1">126 <span
+                                    class="text-lg font-sans font-normal text-gray-400">hrs</span></span>
+                            <span class="text-xs text-gray-400 uppercase tracking-wide">Weekly Capacity</span>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-gray-300 text-sm font-semibold mb-2">Personnel:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="bg-gray-800 text-gray-300 px-2 py-1 rounded text-xs border border-gray-700">Social
+                                    Media Team</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-box p-4 mt-auto">
+                        <p class="text-emerald-400 text-xs font-bold uppercase mb-1"><i
+                                class="fas fa-project-diagram mr-1"></i> Recommendation</p>
+                        <p class="text-gray-300 text-sm leading-snug">Wide open for project-based SMM work.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+
+    </div>
+
+    <!-- === SLIDE 10 === -->
+
+
+    <div class="slide-container bg-grid">
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 z-10 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Marketing & Ops
+                    Roster</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Capacity & Shift Analysis</p>
+            </div>
+            <!-- Standard Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <main class="flex-1 px-12 py-8 overflow-y-auto flex flex-col z-10">
+            <div class="glass-card w-full h-full p-6 overflow-hidden flex flex-col relative">
+                <!-- Grid Layout: Responsive Columns -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-y-auto content-start custom-scrollbar p-2 z-10">
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Azam Sultan</div>
+                            <div class="text-[10px] text-gray-400">SM • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-white">30h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Eman Arif</div>
+                            <div class="text-[10px] text-gray-400">SM • Unknown</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-emerald-400">42h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Nayab Manzoor</div>
+                            <div class="text-[10px] text-gray-400">SM • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-white">30h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Fahad Rafique</div>
+                            <div class="text-[10px] text-gray-400">SM • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-white">27h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Ali Rayyan</div>
+                            <div class="text-[10px] text-gray-400">Dev • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-emerald-400">35h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Azeema Ateeq</div>
+                            <div class="text-[10px] text-gray-400">BD • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-emerald-400">42h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Tehreem Nasir</div>
+                            <div class="text-[10px] text-gray-400">BD • Morning</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-white">42h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Muhammad Ahmad</div>
+                            <div class="text-[10px] text-gray-400">BD • Night</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-emerald-400">42h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-emerald-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Muhammad Fayyaz</div>
+                            <div class="text-[10px] text-gray-400">BD • Night</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-emerald-400">42h Free</div>
+                            <div class="text-[10px] text-gray-300">Available</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Zainab Rana</div>
+                            <div class="text-[10px] text-gray-400">Ops • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-2 rounded bg-white/5 border-l-2 border-red-500">
+                        <div>
+                            <div class="font-bold text-white text-xs">Neha</div>
+                            <div class="text-[10px] text-gray-400">Ops • Evening</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-xs text-gray-300">0h Free</div>
+                            <div class="text-[10px] text-gray-300">Full</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-auto pt-4 border-t border-gray-700/50 flex justify-between text-[10px] text-gray-400">
+                    <span>Marketing & Ops Roster</span>
+                    <span>Total Staff: 11</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+
+
+    <div class="slide-container bg-grid">
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 z-10 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Growth Strategy
+                    & Capacity Optimization</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Analysis of 'White Space' &
+                    Capacity Physics</p>
+            </div>
+            <!-- Standard Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <main class="flex-1 px-12 py-8 overflow-y-auto flex flex-col items-center justify-start md:justify-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full h-auto items-start">
+                <!-- Graphic Design -->
+                <div class="glass-card p-8 flex flex-col border-t-4 border-blue-500 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110 duration-700">
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 relative z-10">
+                        <div class="p-2 bg-blue-500/20 rounded-lg"><i class="fas fa-pen-nib text-blue-400"></i></div>
+                        Graphic Design Dept
+                    </h3>
+
+                    <div class="space-y-8 relative z-10">
+                        <!-- Upwork Physics -->
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <p class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1">Upwork ID
+                                        Capacity</p>
+                                    <p class="text-white text-3xl font-['Playfair_Display'] font-bold">432 <span
+                                            class="text-lg text-gray-400 font-sans font-normal">hrs/wk</span></p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-emerald-400 font-bold">22% Utilized</span>
+                                    <p class="text-xs text-gray-300">Massive Growth Potential</p>
+                                </div>
+                            </div>
+                            <div
+                                class="h-3 w-full bg-blue-900/30 rounded-full overflow-hidden border border-blue-500/20">
+                                <div
+                                    class="h-full bg-gradient-to-r from-blue-500 to-emerald-400 w-[22%] shadow-[0_0_10px_rgba(59,130,246,0.5)]">
+                                </div>
+                            </div>
+                            <p class="text-right text-[10px] text-white mt-1">78% White Space Available</p>
+                        </div>
+
+                        <!-- Human Limit -->
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <p class="text-red-300 text-xs font-bold uppercase tracking-wider mb-1">Human
+                                        Payroll Limit</p>
+                                    <p class="text-white text-3xl font-['Playfair_Display'] font-bold">420 <span
+                                            class="text-lg text-gray-400 font-sans font-normal">hrs/wk</span></p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-red-400 font-bold">100% Capped</span>
+                                    <p class="text-xs text-gray-300">Bottleneck</p>
+                                </div>
+                            </div>
+                            <div class="h-3 w-full bg-red-900/30 rounded-full overflow-hidden border border-red-500/20">
+                                <div
+                                    class="h-full bg-gradient-to-r from-red-500 to-red-600 w-full shadow-[0_0_10px_rgba(239,68,68,0.5)]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VA & Tech -->
+                <div class="glass-card p-8 flex flex-col border-t-4 border-indigo-500 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110 duration-700">
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 relative z-10">
+                        <div class="p-2 bg-indigo-500/20 rounded-lg"><i class="fas fa-headset text-indigo-400"></i>
+                        </div>
+                        VA & Tech Dept
+                    </h3>
+
+                    <div class="space-y-8 relative z-10">
+                        <!-- Upwork Physics -->
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <p class="text-indigo-300 text-xs font-bold uppercase tracking-wider mb-1">Upwork ID
+                                        Capacity</p>
+                                    <p class="text-white text-3xl font-['Playfair_Display'] font-bold">576 <span
+                                            class="text-lg text-gray-400 font-sans font-normal">hrs/wk</span></p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-emerald-400 font-bold">51% Utilized</span>
+                                    <p class="text-xs text-gray-300">Healthy Room to Scale</p>
+                                </div>
+                            </div>
+                            <div
+                                class="h-3 w-full bg-indigo-900/30 rounded-full overflow-hidden border border-indigo-500/20">
+                                <div
+                                    class="h-full bg-gradient-to-r from-indigo-500 to-emerald-400 w-[51%] shadow-[0_0_10px_rgba(99,102,241,0.5)]">
+                                </div>
+                            </div>
+                            <p class="text-right text-[10px] text-white mt-1">49% White Space Available</p>
+                        </div>
+
+                        <!-- Human Limit -->
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <p class="text-yellow-300 text-xs font-bold uppercase tracking-wider mb-1">Human
+                                        Payroll Limit</p>
+                                    <p class="text-white text-3xl font-['Playfair_Display'] font-bold">504 <span
+                                            class="text-lg text-gray-400 font-sans font-normal">hrs/wk</span></p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-yellow-400 font-bold">90% Saturation</span>
+                                    <p class="text-xs text-gray-300">Near Capacity</p>
+                                </div>
+                            </div>
+                            <div
+                                class="h-3 w-full bg-yellow-900/30 rounded-full overflow-hidden border border-yellow-500/20">
+                                <div
+                                    class="h-full bg-gradient-to-r from-yellow-500 to-orange-500 w-[90%] shadow-[0_0_10px_rgba(234,179,8,0.5)]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <div class="slide-container bg-grid">
+        <header class="w-full px-12 pt-8 pb-4 flex justify-between items-end border-b border-gray-800 z-10">
+            <header
+                class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 space-y-4 md:space-y-0">
+                <div>
+                    <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                        Success Metrics
+                        Dashboard</h1>
+                    <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Key Performance Indicators
+                        &amp; Targets •
+                        90-Day Outlook</p>
+                </div>
+                <!-- Confidential Badge -->
+                <div
+                    class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                    <i class="fas fa-lock mr-2"></i>Confidential
+                </div>
+            </header>
+            <main class="flex-1 px-12 py-8 grid grid-cols-1 md:grid-cols-2 gap-8 overflow-y-auto">
+                <!-- KPI 3: New Contract Acquisition -->
+                <div class="glass-card p-6 flex flex-col relative overflow-hidden">
+                    <div class="card-header">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="bg-emerald-900/50 p-2.5 rounded-lg text-emerald-400 border border-emerald-500/20">
+                                <i class="fas fa-handshake text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg">New Contract Acquisition</h3>
+                                <p class="text-gray-400 text-xs">Weekly Growth in Underutilized Depts</p>
+                            </div>
+                        </div>
+                        <div class="target-pill">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            Target: 3/Week
+                        </div>
+                    </div>
+                    <div class="flex-1 flex flex-col justify-center items-center relative">
+                        <div class="chart-container">
+                            <canvas id="acquisitionChart"></canvas>
+                            <div class="metric-value">
+                                <div class="text-4xl font-bold text-white font-['Playfair_Display']">0.5</div>
+                                <div class="metric-label">Current Avg</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-2 bg-emerald-900/20 border border-emerald-500/10 rounded-lg p-3 flex justify-between items-center">
+                        <span class="text-gray-400 text-xs">Strategy</span>
+                        <span class="text-white font-bold text-sm">Activate Digital Marketing</span>
+                    </div>
+                </div>
+                <!-- KPI 4: Tracking Compliance -->
+                <div class="glass-card p-6 flex flex-col relative overflow-hidden">
+                    <div class="card-header">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-amber-900/50 p-2.5 rounded-lg text-amber-400 border border-amber-500/20">
+                                <i class="fas fa-clipboard-check text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-bold text-lg">Tracking Compliance</h3>
+                                <p class="text-gray-400 text-xs">Designer Revision Logging</p>
+                            </div>
+                        </div>
+                        <div class="target-pill">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            Target: 95%
+                        </div>
+                    </div>
+                    <div class="flex-1 flex flex-col justify-center items-center relative">
+                        <div class="chart-container">
+                            <canvas id="complianceChart"></canvas>
+                            <div class="metric-value">
+                                <div class="text-4xl font-bold text-white font-['Playfair_Display']">24%</div>
+                                <div class="metric-label">Current Est.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-2 bg-amber-900/20 border border-amber-500/10 rounded-lg p-3 flex justify-between items-center">
+                        <span class="text-gray-400 text-xs">Optimization</span>
+                        <span class="text-white font-bold text-sm">Implement SOPs</span>
+                    </div>
+                </div>
+            </main>
+    </div>
+    <script>
+        (() => {
+
+            const commonOptions = {
+                rotation: -90,
+                circumference: 180,
+                cutout: '85%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                maintainAspectRatio: false,
+                responsive: true
+            };
+
+            new Chart(document.getElementById('acquisitionChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Current', 'Target Gap'],
+                    datasets: [{
+                        data: [0.5, 2.5],
+                        backgroundColor: ['#10b981', '#1e293b'], // Emerald
+                        borderWidth: 0,
+                        borderRadius: 10
+                    }]
+                },
+                options: commonOptions
+            });
+            new Chart(document.getElementById('complianceChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Compliant', 'Non-Compliant'],
+                    datasets: [{
+                        data: [24, 76],
+                        backgroundColor: ['#f59e0b', '#1e293b'], // Amber
+                        borderWidth: 0,
+                        borderRadius: 10
+                    }]
+                },
+                options: commonOptions
+            });
+        })();
+    </script>
+
+    <!-- === SLIDE 17 === -->
+
+
+    <div class="slide-container bg-grid">
+        <!-- Header -->
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Critical Issues:
+                    The Paradox</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Root Cause Analysis of Capacity
+                    Discrepancies
+                    • January 2026</p>
+            </div>
+            <!-- Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-1 px-12 py-6 flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8 overflow-y-auto">
+            <!-- Left Column: The Visual Paradox -->
+            <div class="w-full lg:w-1/3 flex flex-col">
+                <div
+                    class="glass-card rounded-xl p-6 border border-red-500/30 h-full flex flex-col relative overflow-hidden">
+                    <!-- Absolute Background Glow -->
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-red-900/20 rounded-full filter ">
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-4 text-center font-['Playfair_Display']">The Operational
+                        Disconnect</h2>
+                    <!-- Top: Human Reality -->
+                    <div class="flex flex-col items-center z-10">
+                        <div class="flex space-x-2 mb-2">
+                            <i class="fas fa-user text-emerald-400 text-2xl"></i>
+                            <i class="fas fa-user text-emerald-400 text-2xl"></i>
+                            <i class="fas fa-user text-emerald-400 text-2xl"></i>
+                            <i class="fas fa-user text-emerald-400 text-2xl"></i>
+                            <i class="fas fa-user text-emerald-400 text-2xl"></i>
+                        </div>
+                        <div
+                            class="bg-emerald-900/30 text-emerald-400 px-4 py-1 rounded-full text-sm font-bold border border-emerald-500/30 mb-2">
+                            Full Staff
+                        </div>
+                        <p class="text-gray-400 text-xs text-center">"We are swamped with work."</p>
+                    </div>
+                    <!-- Divider -->
+                    <div class="paradox-divider w-full z-10"></div>
+                    <!-- Bottom: Digital Reality -->
+                    <div class="flex flex-col items-center z-10">
+                        <div class="flex space-x-2 mb-2 opacity-40">
+                            <i class="far fa-id-card text-gray-300 text-2xl"></i>
+                            <i class="far fa-id-card text-gray-300 text-2xl"></i>
+                            <i class="far fa-id-card text-gray-300 text-2xl"></i>
+                            <i class="far fa-id-card text-gray-300 text-2xl"></i>
+                            <i class="far fa-id-card text-gray-300 text-2xl"></i>
+                        </div>
+                        <div
+                            class="bg-red-900/30 text-red-400 px-4 py-1 rounded-full text-sm font-bold border border-red-500/30 mb-2">
+                            Empty IDs
+                        </div>
+                        <p class="text-gray-400 text-xs text-center">"Where are the hours?"</p>
+                    </div>
+                    <!-- Summary Box at bottom -->
+                    <div class="mt-auto bg-red-950/40 p-4 rounded-lg border border-red-500/20 text-center z-10">
+                        <p class="text-red-300 font-bold text-lg">66% Gap</p>
+                        <p class="text-gray-400 text-xs">Between Payroll &amp; Revenue</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: 4 Root Causes -->
+            <div class="w-full lg:w-2/3 flex flex-col justify-between h-auto space-y-4 lg:space-y-0">
+                <h3
+                    class="text-xl text-gray-300 font-semibold mb-3 uppercase tracking-wider border-l-4 border-blue-500 pl-4">
+                    Identified Root Causes</h3>
+                <!-- Cause 1 -->
+                <div class="issue-card p-5 rounded-r-xl mb-2 flex items-start space-x-4 flex-1 mx-2">
+                    <div class="bg-gray-800 p-2 rounded-lg flex-shrink-0 border border-gray-700">
+                        <i class="fas fa-rotate-left text-red-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-1">Revision Work Not Logged</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Designers treat revisions as "off the clock"
+                            courtesies to
+                            avoid billing disputes. This massive volume of work is visible to the client but invisible
+                            to the billing cycle.</p>
+                    </div>
+                </div>
+                <!-- Cause 2 -->
+                <div class="issue-card p-5 rounded-r-xl mb-2 flex items-start space-x-4 flex-1 mx-2">
+                    <div class="bg-gray-800 p-2 rounded-lg flex-shrink-0 border border-gray-700">
+                        <i class="fas fa-chalkboard-user text-yellow-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-1">Training Time as "Assigned" Work</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">New staff shadowing seniors are counted as
+                            "fully booked" in
+                            the roster, but their hours cannot be billed to Upwork contracts, creating a false sense of
+                            capacity utilization.</p>
+                    </div>
+                </div>
+                <!-- Cause 3 -->
+                <div class="issue-card p-5 rounded-r-xl mb-2 flex items-start space-x-4 flex-1 mx-2">
+                    <div class="bg-gray-800 p-2 rounded-lg flex-shrink-0 border border-gray-700">
+                        <i class="fas fa-clipboard-list text-blue-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-1">Administrative Overhead</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Internal reporting, Slack communication, and
+                            stand-ups consume
+                            ~20% of the workday. This "Shadow Work" is necessary but currently untracked and unbilled.
+                        </p>
+                    </div>
+                </div>
+                <!-- Cause 4 -->
+                <div class="issue-card p-8 rounded-r-xl flex items-start space-x-5 flex-1 mx-2">
+                    <div class="bg-gray-800 p-2 rounded-lg flex-shrink-0 border border-gray-700">
+                        <i class="fas fa-users-viewfinder text-purple-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg mb-1">The "Shared ID" Bottleneck</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">Multiple staff members (e.g., Graphic Design
+                            team) funneling
+                            work through a single ID (Kainat) creates logistical bottlenecks, forcing work offline to
+                            avoid simultaneous login flags.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+
+    </div>
+
+    <!-- === SLIDE 12 === -->
+
+
+    <div class="slide-container bg-grid">
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 z-10 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Strategic
+                    Execution Enablers</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Foundational requirements for
+                    success</p>
+            </div>
+        </header>
+        <main class="flex-1 px-12 py-8 overflow-y-auto flex flex-col items-center justify-start md:justify-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full h-auto items-center px-6 md:px-12">
+                <div class="h-auto flex flex-col justify-center text-center lg:text-left">
+                    <h2 class="text-4xl md:text-6xl font-['Playfair_Display'] font-bold text-white mb-6 leading-tight">
+                        Key Enablers
+                        for <br /><span class="text-blue-400">Execution</span></h2>
+                    <p
+                        class="text-gray-300 text-base md:text-lg leading-relaxed border-l-0 lg:border-l-4 border-blue-500 lg:pl-6">
+                        Foundational
+                        pillars required to unlock the revenue potential.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full h-auto">
+                    <div class="glass-card p-4 flex items-center gap-4 border-l-4 border-emerald-500">
+                        <div
+                            class="bg-emerald-900/30 p-3 rounded-full text-emerald-400 border border-emerald-500/20 shrink-0">
+                            <i class="fas fa-file-contract text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white text-lg font-bold mb-1">Standard SOPs</h3>
+                            <p class="text-gray-400 text-xs">For time tracking</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4 flex items-center gap-4 border-l-4 border-amber-500">
+                        <div
+                            class="bg-amber-900/30 p-3 rounded-full text-amber-400 border border-amber-500/20 shrink-0">
+                            <i class="fas fa-crosshairs text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white text-lg font-bold mb-1">Utilization Targets</h3>
+                            <p class="text-gray-400 text-xs">Floor of 60%</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4 flex items-center gap-4 border-l-4 border-blue-500">
+                        <div class="bg-blue-900/30 p-3 rounded-full text-blue-400 border border-blue-500/20 shrink-0"><i
+                                class="fas fa-calendar-check text-xl"></i></div>
+                        <div>
+                            <h3 class="text-white text-lg font-bold mb-1">Weekly Reviews</h3>
+                            <p class="text-gray-400 text-xs">Capacity stand-ups</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4 flex items-center gap-4 border-l-4 border-purple-500">
+                        <div
+                            class="bg-purple-900/30 p-3 rounded-full text-purple-400 border border-purple-500/20 shrink-0">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white text-lg font-bold mb-1">Incentive Alignment</h3>
+                            <p class="text-gray-400 text-xs">Reward billable hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <div class="slide-container bg-grid">
+        <header class="w-full px-12 pt-8 pb-4 flex justify-between items-end border-b border-gray-800 z-10">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-4xl text-white font-bold tracking-tight mb-2">90-Day Action
+                    Plan</h1>
+                <p class="text-blue-400 text-lg font-light tracking-wide">Roadmap to 100% Tracking & Utilization</p>
+            </div>
+        </header>
+        <main class="flex-1 px-12 py-8 overflow-hidden flex flex-col items-center justify-center">
+            <div class="w-full max-w-6xl space-y-8">
+                <!-- Phase 1 -->
+                <div class="glass-card p-6 border-l-4 border-blue-500 relative">
+                    <div class="absolute -left-3 top-6 w-6 h-6 bg-blue-500 rounded-full border-4 border-gray-900"></div>
+                    <h3 class="text-xl font-bold text-white mb-1">Phase 1: Stabilization (Weeks 1-4)</h3>
+                    <p class="text-blue-300 text-sm mb-4">Focus: Stop the bleeding. Capture the "Ghost Work".</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-400"></i> <span
+                                class="text-gray-300 text-sm">Implement "Log Everything" SOP</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-400"></i> <span
+                                class="text-gray-300 text-sm">Audit all "Offline" hours</span></div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="glass-card p-6 border-l-4 border-indigo-500 relative">
+                    <div class="absolute -left-3 top-6 w-6 h-6 bg-indigo-500 rounded-full border-4 border-gray-900">
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Phase 2: Optimization (Weeks 5-8)</h3>
+                    <p class="text-indigo-300 text-sm mb-4">Focus: Fill the buckets. Maximize ID Utilization.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-indigo-400"></i> <span
+                                class="text-gray-300 text-sm">Move "Shadow Admin" tasks to underutilized VA IDs</span>
+                        </div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-indigo-400"></i> <span
+                                class="text-gray-300 text-sm">Launch Digital Marketing Bundles</span></div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="glass-card p-6 border-l-4 border-emerald-500 relative">
+                    <div class="absolute -left-3 top-6 w-6 h-6 bg-emerald-500 rounded-full border-4 border-gray-900">
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Phase 3: Scale (Weeks 9-12)</h3>
+                    <p class="text-white text-sm mb-4">Focus: Expand the ceiling.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-400"></i> <span
+                                class="text-gray-300 text-sm">Evaluate headcount expansion vs ID limits</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-emerald-400"></i> <span
+                                class="text-gray-300 text-sm">Full 100% Tracking Compliance</span></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <div class="slide-container bg-grid">
+        <!-- Header -->
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 z-10 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">
+                    Strategic
+                    Recommendations</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Three-Pronged Approach for
+                    Revenue
+                    Optimization</p>
+            </div>
+            <!-- Confidential Badge -->
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-1 px-12 py-8 flex flex-col gap-6 relative z-10 overflow-y-auto">
+            <!-- Top Row: 3 Priorities -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto">
+                <!-- Priority 1 -->
+                <div
+                    class="glass-card rounded-2xl p-8 relative overflow-hidden flex flex-col glow-blue border-t-4 border-t-blue-500">
+                    <div class="priority-number">01</div>
+                    <div class="icon-circle bg-blue-900/50 text-blue-400 border border-blue-500/30">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2 font-['Playfair_Display']">Make Invisible Work Visible
+                    </h3>
+                    <p class="text-blue-200 font-semibold mb-4 text-sm uppercase tracking-wide">The Foundation</p>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 flex-1">
+                        Currently, 66% of output is "ghost work." Mandate strict Upwork tracking for all revisions,
+                        administrative tasks, and internal meetings. If it happens, it must be logged.
+                    </p>
+                    <div class="bg-blue-900/30 border border-blue-500/30 rounded-lg p-3">
+                        <div class="flex items-center gap-2 text-blue-400 font-bold text-sm">
+                            <i class="fas fa-check-circle"></i> Action:
+                        </div>
+                        <p class="text-white text-xs mt-1">Implement "Log Everything" Policy</p>
+                    </div>
+                </div>
+                <!-- Priority 2 -->
+                <div
+                    class="glass-card rounded-2xl p-8 relative overflow-hidden flex flex-col glow-emerald border-t-4 border-t-emerald-500">
+                    <div class="priority-number">02</div>
+                    <div class="icon-circle bg-emerald-900/50 text-emerald-400 border border-emerald-500/30">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2 font-['Playfair_Display']">Activate Dormant Resources
+                    </h3>
+                    <p class="text-white font-semibold mb-4 text-sm uppercase 
+tracking-wide">The Expansion</p>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 flex-1">
+                        The Digital Marketing bench has 213h/week of open capacity. Transform this overhead into revenue
+                        by packaging SEO and Social Media bundles for immediate sale.
+                    </p>
+                    <div class="bg-emerald-900/30 border border-emerald-500/30 rounded-lg p-3">
+                        <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+                            <i class="fas fa-check-circle"></i> Action:
+                        </div>
+                        <p class="text-white text-xs mt-1">Launch Marketing Packages</p>
+                    </div>
+                </div>
+                <!-- Priority 3 -->
+                <div
+                    class="glass-card rounded-2xl p-8 relative overflow-hidden flex flex-col glow-amber border-t-4 border-t-amber-500">
+                    <div class="priority-number">03</div>
+                    <div class="icon-circle bg-amber-900/50 text-amber-400 border border-amber-500/30">
+                        <i class="fas fa-gauge-high"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2 font-['Playfair_Display']">Optimize High Performers
+                    </h3>
+                    <p class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">The
+                        Scale</p>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 flex-1">
+                        Top IDs (Laiba, Saira) are heavily utilized internally but have ID tracking headroom. Scale
+                        their contract loads by 2-3x to maximize the "trust capital" of these profiles.
+                    </p>
+                    <div class="bg-amber-900/30 border border-amber-500/30 rounded-lg p-3">
+                        <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
+                            <i class="fas fa-check-circle"></i> Action:
+                        </div>
+                        <p class="text-white text-xs mt-1">Triple Contract Assignment</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Row: Enablers -->
+
+        </main>
+        <!-- Footer -->
+
+    </div>
+
+    <!-- === SLIDE 18 === -->
+
+
+
+    <!-- Generated Slide: Key Enablers -->
+    <div class="slide-container bg-grid">
+        <header
+            class="w-full px-12 pt-8 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-800 z-10 space-y-4 md:space-y-0">
+            <div>
+                <h1 class="font-['Playfair_Display'] text-3xl md:text-4xl text-white font-bold tracking-tight mb-2">Key
+                    Enablers for
+                    Execution</h1>
+                <p class="text-blue-400 text-base md:text-lg font-light tracking-wide">Operational Framework & Standards
+                </p>
+            </div>
+            <div
+                class="border border-red-500 bg-red-900 bg-opacity-20 text-red-400 px-4 py-1 rounded text-xs tracking-widest font-semibold uppercase">
+                <i class="fas fa-lock mr-2"></i>Confidential
+            </div>
+        </header>
+        <main class="flex-1 px-12 py-6 flex items-center justify-start md:justify-center overflow-y-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full h-auto max-w-6xl mx-auto">
+
+                <!-- Card 1 -->
+                <div
+                    class="glass-card p-6 rounded-2xl border-t-4 border-blue-500 flex flex-col justify-center items-center text-center transform hover:scale-105 transition-transform duration-300">
+                    <div
+                        class="w-16 h-16 rounded-full bg-blue-900/50 flex items-center justify-center text-blue-400 text-3xl mb-3 border border-blue-500/30 glow-blue">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Standard SOPs</h3>
+                    <p class="text-blue-200 text-base font-medium">For time tracking & reporting</p>
+                    <p class="text-gray-400 text-sm mt-2 px-4">Unified protocols ensuring every billable minute is
+                        captured and categorized correctly.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="glass-card p-6 rounded-2xl border-t-4 border-emerald-500 flex flex-col justify-center items-center text-center transform hover:scale-105 transition-transform duration-300">
+                    <div
+                        class="w-16 h-16 rounded-full bg-emerald-900/50 flex items-center justify-center text-emerald-400 text-3xl mb-3 border border-emerald-500/30 glow-emerald">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Utilization Targets</h3>
+                    <p class="text-white text-base font-medium">Floor of 60% per active ID</p>
+                    <p class="text-gray-400 text-sm mt-2 px-4">Minimum baseline utilization requirement to maintain
+                        active status and eligibility.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="glass-card p-6 rounded-2xl border-t-4 border-purple-500 flex flex-col justify-center items-center text-center transform hover:scale-105 transition-transform duration-300">
+                    <div
+                        class="w-16 h-16 rounded-full bg-purple-900/50 flex items-center justify-center text-purple-400 text-3xl mb-3 border border-purple-500/30 glow-blue">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Weekly Reviews</h3>
+                    <p class="text-purple-200 text-base font-medium">Monday capacity stand-ups</p>
+                    <p class="text-gray-400 text-sm mt-2 px-4">Mandatory synchronization to align available hours with
+                        incoming project backlog.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="glass-card p-6 rounded-2xl border-t-4 border-amber-500 flex flex-col justify-center items-center text-center transform hover:scale-105 transition-transform duration-300">
+                    <div
+                        class="w-16 h-16 rounded-full bg-amber-900/50 flex items-center justify-center text-amber-400 text-3xl mb-3 border border-amber-500/30 glow-amber">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Incentive Alignment</h3>
+                    <p class="text-white text-base font-medium">Bonus for billable hours</p>
+                    <p class="text-gray-400 text-sm mt-2 px-4">Direct financial rewards tied to exceeding utilization
+                        thresholds.</p>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+
+</body>
+
+</html>
