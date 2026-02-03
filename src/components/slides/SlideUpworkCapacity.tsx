@@ -146,14 +146,14 @@ const SlideUpworkCapacity = () => {
                     <div className="glass-card p-4 rounded-xl border-l-4 border-amber-500 relative overflow-hidden">
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="text-white font-bold text-lg">Jibran</h3>
-                            <span className="text-amber-400 font-mono font-bold">20%</span>
+                            <span className="text-amber-400 font-mono font-bold">5%</span>
                         </div>
                         <div className="w-full progress-track h-2 rounded-full mb-3 overflow-hidden">
-                            <div className="h-full bg-amber-500 rounded-full" style={{ width: '20%' }}></div>
+                            <div className="h-full bg-amber-500 rounded-full" style={{ width: '5%' }}></div>
                         </div>
                         <div className="flex justify-between text-xs">
                             <span className="text-gray-400">Tracked: <span className="text-white font-bold">8h</span></span>
-                            <span className="text-gray-400">Open: <span className="text-amber-400 font-bold">32h</span></span>
+                            <span className="text-gray-400">Open: <span className="text-amber-400 font-bold">144h</span></span>
                         </div>
                     </div>
                     {/* Zain (Dormant) */}

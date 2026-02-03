@@ -103,7 +103,6 @@ const SlideDepartmentDeepDive = () => {
                         <p className="text-gray-400 text-xs uppercase tracking-wider font-semibold mb-3">Talent Pool (2 Specialists)</p>
                         <div className="flex flex-wrap gap-2">
                             <span className="staff-pill border-emerald-500/30 bg-emerald-900/40 text-emerald-100">Ali Rayyan</span>
-                            <span className="staff-pill border-amber-500/30 bg-amber-900/40 text-amber-100">Jibran</span>
                         </div>
                     </div>
                     <div className="strategy-box bg-emerald-900/20 border border-emerald-500/20">

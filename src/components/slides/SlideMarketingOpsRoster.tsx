@@ -11,9 +11,6 @@ const SlideMarketingOpsRoster = () => {
     ];
     const opsList = [
         { name: 'Ali Rayyan', role: 'Tech • Morning', free: '0h Free', status: 'Full', color: 'red' },
-        { name: 'Jibran', role: 'Tech • Unknown', free: '35h Free', status: 'Available', color: 'emerald' },
-        { name: 'Hussnain Tariq', role: 'Ops • Morning', free: '0h Free', status: 'Full', color: 'red' },
-        { name: 'Ammar Hameed', role: 'HR • Morning', free: '0h Free', status: 'Full', color: 'red' },
     ];
 
     return (

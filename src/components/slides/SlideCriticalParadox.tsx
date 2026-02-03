@@ -16,26 +16,7 @@ const SlideCriticalParadox = () => {
             </header>
             <main className="flex-1 px-12 py-8 overflow-y-auto flex flex-col items-center justify-center">
                 <div className="w-full max-w-5xl">
-                    <div className="flex flex-col md:flex-row items-center justify-center mb-12 gap-8">
-                        {/* Paradox Left */}
-                        <div className="text-center">
-                            <div className="text-5xl md:text-6xl font-bold text-white mb-2">26 Staff</div>
-                            <div className="text-gray-400 uppercase tracking-widest text-sm">Full-Time Personnel</div>
-                        </div>
-                        {/* Paradox Divider */}
-                        <div className="hidden md:flex flex-col items-center px-4">
-                            <div className="h-12 w-0.5 bg-red-500/50"></div>
-                            <div className="bg-gray-900 border border-red-500 p-2 rounded-full z-10 my-2">
-                                <i className="fas fa-not-equal text-red-500 text-2xl"></i>
-                            </div>
-                            <div className="h-12 w-0.5 bg-red-500/50"></div>
-                        </div>
-                        {/* Paradox Right */}
-                        <div className="text-center">
-                            <div className="text-5xl md:text-6xl font-bold text-blue-500 mb-2">8 IDs</div>
-                            <div className="text-blue-300 uppercase tracking-widest text-sm">Active Upwork Profiles</div>
-                        </div>
-                    </div>
+
 
                     <div className="paradox-divider w-full"></div>
 

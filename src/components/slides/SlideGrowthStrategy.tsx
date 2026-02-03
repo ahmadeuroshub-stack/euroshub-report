@@ -34,7 +34,6 @@ const SlideGrowthStrategy = () => {
                         <div className="mt-auto pt-4 border-t border-gray-700/50">
                             <div className="flex justify-between items-center text-xs">
                                 <span className="text-gray-400">Potential Revenue</span>
-                                <span className="text-emerald-400 font-bold text-lg">+$5k/mo</span>
                             </div>
                         </div>
                     </div>
@@ -56,7 +55,6 @@ const SlideGrowthStrategy = () => {
                         <div className="mt-auto pt-4 border-t border-gray-700/50">
                             <div className="flex justify-between items-center text-xs">
                                 <span className="text-gray-400">Potential Revenue</span>
-                                <span className="text-blue-400 font-bold text-lg">+$8k/mo</span>
                             </div>
                         </div>
                     </div>
